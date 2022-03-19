@@ -16,6 +16,19 @@ def power_numbers(*args):
         result.append(num ** 2)
     return result
 
+def is_odd(number):
+    if number % 2 == 1:
+        return True
+    else:
+        return False
+
+
+def is_even(number):
+    if number % 2 == 0:
+        return True
+    else:
+        return False
+
 
 def is_prime(number):
     if number > 1:
@@ -32,7 +45,7 @@ EVEN = "even"
 PRIME = "prime"
 
 
-def filter_numbers():
+def filter_numbers(num_list, filter_type):
     """
     функция, которая на вход принимает список из целых чисел,
     и возвращает только чётные/нечётные/простые числа
@@ -43,8 +56,16 @@ def filter_numbers():
     >>> filter_numbers([2, 3, 4, 5], EVEN)
     <<< [2, 4]
     """
-
+    result = []
+    if filter_type == "odd":
+        result.append(list(filter(is_odd, num_list)))
+    if filter_type == "even":
+        result.append(list(filter(is_even, num_list)))
+    if filter_type == "prime":
+        result.append(list(filter(is_prime, num_list)))
+    return result
 
 if __name__ == "__main__":
     # print(power_numbers(1, 2, 5, 7))
     # print(is_prime(1))
+    # print(filter_numbers([2, 3, 4, 5, 7, 11, 15], PRIME))
