@@ -17,6 +17,15 @@ def power_numbers(*args):
     return result
 
 
+def is_prime(number):
+    if number > 1:
+        for i in range(2, number):
+            if number % i == 0:
+                return False
+        return True
+    else:
+        return None
+
 # filter types
 ODD = "odd"
 EVEN = "even"
@@ -38,3 +47,4 @@ def filter_numbers():
 
 if __name__ == "__main__":
     # print(power_numbers(1, 2, 5, 7))
+    # print(is_prime(1))
