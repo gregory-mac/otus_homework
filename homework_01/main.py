@@ -18,17 +18,11 @@ def power_numbers(*args):
 
 
 def is_odd(number):
-    if number % 2 == 1:
-        return True
-    else:
-        return False
+    return number % 2 == 1
 
 
 def is_even(number):
-    if number % 2 == 0:
-        return True
-    else:
-        return False
+    return number % 2 == 0
 
 
 def is_prime(number):
