@@ -53,10 +53,10 @@ def filter_numbers(num_list, filter_type):
     <<< [2, 4]
     """
     result = None
-    if filter_type == "odd":
+    if filter_type == ODD:
         result = list(filter(is_odd, num_list))
-    if filter_type == "even":
+    if filter_type == EVEN:
         result = list(filter(is_even, num_list))
-    if filter_type == "prime":
+    if filter_type == PRIME:
         result = list(filter(is_prime, num_list))
     return result
