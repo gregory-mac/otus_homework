@@ -9,10 +9,10 @@ WORKDIR /app
 RUN pip install poetry
 RUN poetry config virtualenvs.create false
 
-COPY ./pyproject.toml ./poetry.lock ./
+COPY pyproject.toml poetry.lock ./
 RUN poetry install
 
-COPY homework_03/app.py ./
+COPY app.py ./
 
 EXPOSE 8000
 
