@@ -1,6 +1,21 @@
 """
 создайте асинхронные функции для выполнения запросов к ресурсам (используйте aiohttp)
 """
+import aiohttp
 
-USERS_DATA_URL = ""
-POSTS_DATA_URL = ""
+USERS_DATA_URL = "https://jsonplaceholder.typicode.com/users"
+POSTS_DATA_URL = "https://jsonplaceholder.typicode.com/posts"
+
+
+async def fetch_json(url: str) -> dict:
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            return await response.json()
+
+
+async def fetch_users() -> dict:
+    return await fetch_json(USERS_DATA_URL)
+
+
+async def fetch_posts() -> dict:
+    return await fetch_json(POSTS_DATA_URL)
