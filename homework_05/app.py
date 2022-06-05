@@ -22,12 +22,12 @@ app = Flask(__name__)
 app.config.update(ENV="development", SECRET_KEY="verysecretkey")
 
 
-@app.route("/")
+@app.route("/", endpoint="index")
 def index_page():
     return render_template("index.html")
 
 
-@app.route("/about/")
+@app.route("/about/", endpoint="about")
 def about_page():
     return render_template("about.html")
 
