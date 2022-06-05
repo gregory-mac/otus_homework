@@ -19,7 +19,7 @@ from flask import (
 
 
 app = Flask(__name__)
-app.config.update(ENV="development")
+app.config.update(ENV="development", SECRET_KEY="verysecretkey")
 
 
 @app.route("/")
