@@ -42,8 +42,8 @@ async def insert_users_into_db(session: AsyncSession, user_list: List[dict]) -> 
                      username=user["username"],
                      email=user["email"])
         user_entries.append(entry)
-        session.add_all(user_entries)
-        await session.commit()
+    session.add_all(user_entries)
+    await session.commit()
 
 
 async def insert_posts_into_db(session: AsyncSession, post_list: List[dict]) -> None:
@@ -53,8 +53,8 @@ async def insert_posts_into_db(session: AsyncSession, post_list: List[dict]) -> 
                      title=post["title"],
                      body=post["body"])
         post_entries.append(entry)
-        session.add_all(post_entries)
-        await session.commit()
+    session.add_all(post_entries)
+    await session.commit()
 
 
 async def async_main():
