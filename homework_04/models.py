@@ -51,7 +51,7 @@ class User(Base):
     username = Column(String(20), nullable=False, unique=True)
     email = Column(String(30), nullable=False, unique=True)
 
-    posts = relationship("Post", back_populates="user", uselist=False)
+    posts = relationship("Post", back_populates="user")
 
 
 class Post(Base):
@@ -59,7 +59,7 @@ class Post(Base):
     title = Column(String(100), nullable=False, unique=True)
     body = Column(String(500), nullable=False, unique=False)
 
-    user = relationship("User", back_populates="posts", uselist=False)
+    user = relationship("User", back_populates="posts")
 
 
 Session = sessionmaker(async_engine, expire_on_commit=False, class_=AsyncSession)
