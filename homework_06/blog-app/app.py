@@ -1,31 +1,27 @@
-from os import getenv
-
 from flask import Flask, request, render_template
+from flask_migrate import Migrate
 
-from views.products import products_app
+from views.posts import posts_app
+
+from models import Post
 from models.database import db
 
 
 app = Flask(__name__)
-config_name = "config.%s" % getenv("CONFIG", "DevelopmentConfig")
-app.config.from_object(config_name)
-
-app.register_blueprint(products_app, url_prefix="/products")
-
 db.init_app(app)
 migrate = Migrate(app, db, compare_type=True)
 
+app.register_blueprint(posts_app, url_prefix="/posts")
+
 
 @app.route("/")
-def index_page():
-    print(request.path)
-    print(vars(request.url_rule))
-    print(vars(request))
-    return render_template("index.html")
+def view_blog():
+    posts = Post.query.all()
+    return render_template("view_blog.html", posts=posts)
 
 
-@app.get("/hello/")
-def hello_name():
+@app.get("/add/")
+def add_post():
     name = request.args.get("name", "")
     name = name.strip()
     if not name:
@@ -52,5 +48,5 @@ def create_db():
 
 
 if __name__ == "__main__":
-    create_db()
-    app.run(port=5000)
+    # create_db()
+    app.run(port=5000, debug=True)
