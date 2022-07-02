@@ -2,12 +2,13 @@ from flask import (
     Blueprint,
     render_template,
     request,
-    flash,
+    redirect,
+    url_for,
 )
 from sqlalchemy.exc import IntegrityError, DatabaseError
 from werkzeug.exceptions import InternalServerError
 
-from models import Post
+from models import User, Post
 from views.forms import PostForm
 from models.database import db
 
@@ -28,7 +29,12 @@ def add_post():
     title = form.title.data
     body = form.body.data
 
-    post = Post(user=user, title=title, body=body)
+    user_obj = User.query.filter_by(username=user).first()
+
+    if not user_obj:
+        return f"User {user} not found in the database", 500
+
+    post = Post(user=user_obj, title=title, body=body)
     db.session.add(post)
 
     try:
@@ -41,4 +47,5 @@ def add_post():
     except DatabaseError:
         raise InternalServerError(f"Could not create post {post.title!r}")
 
-    flash(f"Created new post: {post.title}", "success")
+    url = url_for("view_blog")
+    return redirect(url)

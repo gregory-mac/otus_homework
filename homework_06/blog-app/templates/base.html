@@ -29,6 +29,10 @@
                 {% set add_post_path = url_for("posts_app.add_post") %}
               <a class="nav-link {{ 'active' if request.path == add_post_path else '' }}" href="{{ add_post_path }}">Add post</a>
             </li>
+            <li class="nav-item">
+                {% set add_user_path = url_for("users_app.add_user") %}
+              <a class="nav-link {{ 'active' if request.path == add_user_path else '' }}" href="{{ add_user_path }}">Add user</a>
+            </li>
           </ul>
         </div>
       </div>
