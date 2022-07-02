@@ -7,6 +7,7 @@ from models.database import db
 
 
 app = Flask(__name__)
+app.config.from_pyfile('settings.py')
 db.init_app(app)
 migrate = Migrate(app, db, compare_type=True)
 
@@ -20,5 +21,4 @@ def view_blog():
 
 
 if __name__ == "__main__":
-    # create_db()
-    app.run(port=5000, debug=True)
+    app.run(port=8000, debug=True)
