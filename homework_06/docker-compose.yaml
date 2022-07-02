@@ -1,10 +1,25 @@
-version: "3"
+version: "3.9"
 
 services:
+
+  blog:
+    build:
+      context: .
+      dockerfile: ./docker-build/blog/Dockerfile
+    environment:
+      CONFIG: ProductionConfig
+      SQLALCHEMY_DATABASE_URI: "postgresql+pg8000://postgres:password@localhost:5432/blog"
+    ports:
+      - "8000:80"
+    command: "uvicorn app:app --host=0.0.0.0 --port=8000"
+    depends_on:
+      pg:
+        condition: service_healthy
+
   pg:
     image: postgres
     environment:
-      POSTGRES_DB: postgres
+      POSTGRES_DB: blog
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       PGDATA: /var/lib/postgresql/data/pgdata
@@ -12,6 +27,11 @@ services:
       - "5432:5432"
     volumes:
       - db-data:/var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
   db-data:
