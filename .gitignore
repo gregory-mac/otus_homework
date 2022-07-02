@@ -1,3 +1,5 @@
 .idea/
 venv/
 exercises
+*.pyc
+__pycache__/
