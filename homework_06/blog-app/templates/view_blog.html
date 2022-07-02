@@ -1,71 +1,26 @@
 {% extends 'base.html' %}
 
-
-<div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Accordion Item #1
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-</div>
-
-
 {% block body %}
-  <h1>Products:</h1>
-  {% if products %}
-    <ul class="list-group">
-      {% for product in products %}
-        <li class="list-group-item">
-          <a class="text-decoration-none"
-             href="{{ url_for('products_app.details', product_id=product.id) }}">
-            {{ product.name }}
-          </a>
-          {% if product.is_new %}
-            <span class="badge bg-secondary">New</span>
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <div><strong>No products</strong></div>
-  {% endif %}
-  <br>
-  <div>
-    <a href="{{ url_for('products_app.add') }}">
-      Add product
-    </a>
-  </div>
+    {% if posts %}
+        {% for post in posts %}
+        <div class="accordion" id="accordionBlog">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{ post.id }}" aria-expanded="true" aria-controls="collapse_{{ post.id }}">
+                  {{ post.title }}
+              </button>
+            </h2>
+            <div id="collapse_{{ post.id }}" class="accordion-collapse collapse show" aria-labelledby="heading_{{ post.id }}" data-bs-parent="#accordionBlog">
+              <div class="accordion-body">
+                  {{ post.body }}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div><strong>No posts exist</strong></div>
+    {% endif %}
 {% endblock %}
 
 {% block title %}
