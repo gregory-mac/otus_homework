@@ -1,7 +1,8 @@
 from flask import Flask, render_template
 from flask_migrate import Migrate
 
-from views.posts import posts_app
+from views import posts_app
+from views import users_app
 from models import Post
 from models.database import db
 
@@ -12,6 +13,7 @@ db.init_app(app)
 migrate = Migrate(app, db, compare_type=True)
 
 app.register_blueprint(posts_app, url_prefix="/posts")
+app.register_blueprint(users_app, url_prefix="/users")
 
 
 @app.route("/", endpoint="view_blog")
@@ -21,4 +23,4 @@ def view_blog():
 
 
 if __name__ == "__main__":
-    app.run(port=8000, debug=True)
+    app.run(port=8000)

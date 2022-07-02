@@ -24,9 +24,6 @@ def upgrade():
         sa.Column("name", String(50), nullable=False, unique=False),
         sa.Column("username", String(20), nullable=False, unique=True),
         sa.Column("email", String(30), nullable=False, unique=True),
-        # sa.PrimaryKeyConstraint("id"),
-        # sa.UniqueConstraint("username"),
-        # sa.UniqueConstraint("email"),
     )
     op.create_table(
         'posts',
@@ -34,8 +31,6 @@ def upgrade():
         sa.Column("user_id", Integer, ForeignKey("users.id"), nullable=False, unique=False),
         sa.Column("title", String(100), nullable=False, unique=True),
         sa.Column("body", String(500), nullable=False, unique=False),
-        # sa.PrimaryKeyConstraint("id"),
-        # sa.UniqueConstraint("title"),
     )
 
 
