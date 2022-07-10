@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 
 from .models import User, Post
 from .forms import PostCreateForm, UserCreateForm
@@ -29,3 +29,8 @@ class UserCreateView(CreateView):
 
     def get_success_url(self):
         return reverse("blog:view_blog")
+
+
+class UserListView(ListView):
+    model = User
+    context_object_name = "users"
