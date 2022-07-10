@@ -1,0 +1,7 @@
+asgiref==3.5.2
+asn1crypto==1.5.1
+Django==4.0.6
+gunicorn==20.1.0
+pg8000==1.29.1
+scramp==1.4.1
+sqlparse==0.4.2
