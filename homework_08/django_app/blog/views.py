@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 
 from .models import User, Post
 from .forms import PostCreateForm, UserCreateForm
@@ -34,3 +34,8 @@ class UserCreateView(CreateView):
 class UserListView(ListView):
     model = User
     context_object_name = "users"
+
+
+class UserDetailView(DetailView):
+    model = User
+    context_object_name = "user"

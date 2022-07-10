@@ -5,6 +5,7 @@ class User(models.Model):
     name = models.CharField(max_length=50, null=False, unique=False)
     username = models.CharField(max_length=32, null=False, unique=True)
     email = models.CharField(max_length=50, null=False, unique=True)
+    biography = models.TextField(max_length=300, null=True, blank=True, unique=False)
 
     def __str__(self):
         return self.username
