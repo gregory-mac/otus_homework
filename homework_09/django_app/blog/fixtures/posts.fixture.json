@@ -1,0 +1,29 @@
+[
+  {
+    "model": "blog.post",
+    "pk": 4,
+    "fields": {
+      "title": "First post",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla.",
+      "user": 1
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 5,
+    "fields": {
+      "title": "Second post",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla.",
+      "user": 1
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 6,
+    "fields": {
+      "title": "Third post",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla.",
+      "user": 2
+    }
+  }
+]
