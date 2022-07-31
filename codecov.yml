@@ -1,0 +1,3 @@
+ignore:
+  - manage.py
+  - blog/tests.py
