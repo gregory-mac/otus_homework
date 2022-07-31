@@ -26,4 +26,4 @@ jobs:
     - name: Upload Coverage to Codecov
       uses: codecov/codecov-action@v3
       with:
-        directory: ./homework_10/django_app/
+        files: ./homework_10/django_app/.coverage
