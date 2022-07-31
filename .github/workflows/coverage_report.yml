@@ -23,5 +23,6 @@ jobs:
       working-directory: ./homework_10/django_app/
       run: |
         coverage run manage.py test
+        coverage xml
     - name: Upload Coverage to Codecov
       uses: codecov/codecov-action@v3
