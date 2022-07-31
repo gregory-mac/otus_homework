@@ -24,4 +24,5 @@ jobs:
     - name: Run Tests
       working-directory: ./homework_10/django_app/
       run: |
+        source venv/bin/activate
         python manage.py test
