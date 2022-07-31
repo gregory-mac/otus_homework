@@ -22,7 +22,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
-      working-directory: ./homework_10/django_app/
+      working-directory: ./homework_10/
       run: |
-        source venv/bin/activate
-        python manage.py test
+        source ./venv/bin/activate
+        ./django_app/python manage.py test
