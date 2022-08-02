@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+  Users list
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1>Users list</h1>
+        <ul>
+           {% for user in users %}
+            <li>
+                <a href="{% url 'blog:user_detail' user.id %}">
+                {{ user.username }}</a>
+                ({{ user.name }})
+            </li>
+          {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

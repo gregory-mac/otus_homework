@@ -4,3 +4,5 @@ exercises
 *.pyc
 __pycache__/
 db.sqlite3
+*.coverage
+coverage.xml

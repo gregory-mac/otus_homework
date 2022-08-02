@@ -1,0 +1,32 @@
+[
+  {
+    "model": "blog.user",
+    "pk": 1,
+    "fields": {
+      "name": "John",
+      "username": "john",
+      "email": "john@example.com",
+      "biography": "Bio depicting life of John"
+    }
+  },
+  {
+    "model": "blog.user",
+    "pk": 2,
+    "fields": {
+      "name": "Ann",
+      "username": "ann",
+      "email": "ann@example.com",
+      "biography": "Ann's bio"
+    }
+  },
+  {
+    "model": "blog.user",
+    "pk": 4,
+    "fields": {
+      "name": "Jane",
+      "username": "jane",
+      "email": "jane@example.com",
+      "biography": ""
+    }
+  }
+]
